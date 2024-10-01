@@ -1,13 +1,15 @@
 const redCircles = (p) => {
-    p.setup = () => {
-      p.createCanvas(400, 400);
-      p.background(200);
-    };
-
-    p.draw = () => {
-      p.fill(255, 0, 0);
-      p.ellipse(p.mouseX, p.mouseY, 50, 50);
-    };
+  p.setup = () => {
+    p.createCanvas(400, 400);
+    p.background(200);
   };
 
-  export default redCircles;
+  p.draw = () => {
+    // Access the radius parameter dynamically, default to 50
+    const radius = p.params?.radius || 50;
+    p.fill(255, 0, 0);
+    p.ellipse(p.mouseX, p.mouseY, radius, radius);
+  };
+};
+
+export default redCircles;
