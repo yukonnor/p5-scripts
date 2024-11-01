@@ -22,9 +22,9 @@ export default function NavBar() {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        News
+                        p5.js Sandbox
                     </Typography>
-                    <Button color="inherit">Login</Button>
+                    <Button color="inherit">Placeholder</Button>
                 </Toolbar>
             </AppBar>
         </Box>

@@ -1,7 +1,7 @@
 const redCircles = (p) => {
     p.setup = () => {
-        p.createCanvas(400, 400);
-        p.background(200);
+        p.createCanvas(600, 600);
+        p.background(p.params?.background || 200);
     };
 
     p.draw = () => {
@@ -9,6 +9,7 @@ const redCircles = (p) => {
         const radius = p.params?.radius || 50;
         p.fill(255, 0, 0);
 
+        // draw ellipses if mouse button is pressed
         p.mouseIsPressed && p.ellipse(p.mouseX, p.mouseY, radius, radius);
     };
 };

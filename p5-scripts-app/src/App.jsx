@@ -1,35 +1,46 @@
 import { useState } from "react";
 import "./App.css";
 
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid2";
+
 import NavBar from "./components/NavBar";
+import SketchInputs from "./components/SketchInputs";
 
 import P5Wrapper from "./components/P5Wrapper";
 import redCircles from "./sketches/red-circles";
 
 function App() {
-    const [radius, setRadius] = useState(50); // Default radius
+    // Store params as an object to easily extend for additional sketches
+    const [params, setParams] = useState({
+        radius: 50, // Default radius for redCircles sketch
+        background: 200,
+    });
 
-    const handleRadiusChange = (e) => {
-        setRadius(e.target.value);
+    // Handle changes to any parameter by key
+    const handleParamChange = (key, value) => {
+        console.log(key, value);
+        setParams((prevParams) => ({
+            ...prevParams,
+            [key]: value,
+        }));
     };
 
     return (
         <>
             <NavBar />
-            <h1>p5.js Sandbox</h1>
+            <Box sx={{ flexGrow: 1 }} id="main-sketch-area">
+                <h1>Red Circles</h1>
 
-            <label>
-                Circle Radius: {radius}px
-                <input
-                    type="range"
-                    min="5"
-                    max="100"
-                    value={radius}
-                    onChange={handleRadiusChange}
-                />
-            </label>
-
-            <P5Wrapper sketch={redCircles} params={{ radius }} />
+                <Grid container spacing={2}>
+                    <Grid size={4}>
+                        <SketchInputs params={params} onParamChange={handleParamChange} />
+                    </Grid>
+                    <Grid size={8}>
+                        <P5Wrapper sketch={redCircles} params={params} />
+                    </Grid>
+                </Grid>
+            </Box>
         </>
     );
 }

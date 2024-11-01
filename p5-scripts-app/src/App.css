@@ -38,3 +38,11 @@
 .read-the-docs {
     color: #888;
 }
+
+#main-sketch-area {
+    margin: 2rem;
+}
+
+.sketch-inputs h3 {
+    margin: 0;
+}
