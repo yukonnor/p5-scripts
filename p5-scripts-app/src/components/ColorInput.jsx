@@ -1,8 +1,8 @@
 import React from "react";
 import { MuiColorInput } from "mui-color-input";
 
-const ColorInput = ({ defaultColor, onChange }) => {
-    const [color, setColor] = React.useState(defaultColor ?? "#ffffff");
+const ColorInput = ({ value, onChange }) => {
+    const [color, setColor] = React.useState(value ?? "#ffffff");
 
     const handleChange = (color) => {
         setColor(color);

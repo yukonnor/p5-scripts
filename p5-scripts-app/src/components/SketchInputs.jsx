@@ -7,27 +7,32 @@ import Typography from "@mui/material/Typography";
 import ColorInput from "./ColorInput";
 
 const SketchInputs = ({ params, onParamChange }) => {
+    console.log("SketchInputs params:", params);
     return (
         <Card className="sketch-inputs">
             <CardContent>
                 <h3>Sketch Inputs</h3>
-                <Typography gutterBottom>Circle Radius</Typography>
 
-                <Slider
-                    value={params.radius}
-                    min={0}
-                    max={100}
-                    aria-labelledby="input-slider-radius"
-                    valueLabelDisplay="auto"
-                    onChange={(e) => onParamChange("radius", e.target.value)}
-                />
-
-                <Typography gutterBottom>Circle Color</Typography>
-
-                <ColorInput
-                    defaultColor={params.circleColor}
-                    onChange={(newColor) => onParamChange("circleColor", newColor)}
-                />
+                {Object.entries(params).map(([key, { value, type, min, max, label }]) => (
+                    <div key={key}>
+                        <Typography gutterBottom>{label}</Typography>
+                        {type === "slider" && (
+                            <Slider
+                                value={value}
+                                min={min}
+                                max={max}
+                                valueLabelDisplay="auto"
+                                onChange={(e) => onParamChange(key, e.target.value)}
+                            />
+                        )}
+                        {type === "color" && (
+                            <ColorInput
+                                value={value}
+                                onChange={(newColor) => onParamChange(key, newColor)}
+                            />
+                        )}
+                    </div>
+                ))}
             </CardContent>
         </Card>
     );
