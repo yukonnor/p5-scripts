@@ -7,7 +7,7 @@ const redCircles = (p) => {
     p.draw = () => {
         // Access the radius parameter dynamically, default to 50
         const radius = p.params?.radius || 50;
-        p.fill(255, 0, 0);
+        p.fill(p.params?.circleColor || "#ff0000");
 
         // draw ellipses if mouse button is pressed
         p.mouseIsPressed && p.ellipse(p.mouseX, p.mouseY, radius, radius);

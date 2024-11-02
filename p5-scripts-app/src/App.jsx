@@ -15,11 +15,11 @@ function App() {
     const [params, setParams] = useState({
         radius: 50, // Default radius for redCircles sketch
         background: 200,
+        circleColor: "#ff0000",
     });
 
     // Handle changes to any parameter by key
     const handleParamChange = (key, value) => {
-        console.log(key, value);
         setParams((prevParams) => ({
             ...prevParams,
             [key]: value,

@@ -4,18 +4,17 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Slider from "@mui/material/Slider";
 import Typography from "@mui/material/Typography";
+import ColorInput from "./ColorInput";
 
 const SketchInputs = ({ params, onParamChange }) => {
     return (
         <Card className="sketch-inputs">
             <CardContent>
                 <h3>Sketch Inputs</h3>
-                <Typography id="input-slider-radius" gutterBottom>
-                    Circle Radius
-                </Typography>
+                <Typography gutterBottom>Circle Radius</Typography>
 
                 <Slider
-                    defaultValue={params.radius}
+                    value={params.radius}
                     min={0}
                     max={100}
                     aria-labelledby="input-slider-radius"
@@ -23,17 +22,11 @@ const SketchInputs = ({ params, onParamChange }) => {
                     onChange={(e) => onParamChange("radius", e.target.value)}
                 />
 
-                <Typography id="input-slider-background" gutterBottom>
-                    Background Color
-                </Typography>
+                <Typography gutterBottom>Circle Color</Typography>
 
-                <Slider
-                    defaultValue={params.background}
-                    min={0}
-                    max={255}
-                    aria-labelledby="input-slider-background"
-                    valueLabelDisplay="auto"
-                    onChange={(e) => onParamChange("background", e.target.value)}
+                <ColorInput
+                    defaultColor={params.circleColor}
+                    onChange={(newColor) => onParamChange("circleColor", newColor)}
                 />
             </CardContent>
         </Card>
